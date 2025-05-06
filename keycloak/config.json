@@ -79,9 +79,6 @@
     "image": "ghcr.io/costantino03/homeassistant-addons/keycloak/{arch}",
     "logo": "images/logo.png",
     "icon": "images/icon.png",
-    "map": [
-        {}
-    ],
     "schema": {
         "default_admin_username": "str",
         "default_admin_password": "str",
