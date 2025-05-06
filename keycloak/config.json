@@ -3,10 +3,6 @@
     "version": "0.1.0",
     "slug": "keycloak",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
-    "arch": [
-        "amd64",
-        "aarch64"
-    ],
     "init": false,
     "ingress": false,
     "panel": false,
