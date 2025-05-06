@@ -7,11 +7,12 @@ EXPOSE 8080
 # Passa all'utente root
 USER root
 
-# Installa Bashio
-RUN apk add --no-cache bash jq curl
-RUN curl -J -L -o /usr/bin/bashio \
-    "https://github.com/hassio-addons/bashio/releases/latest/download/bashio" \
-    && chmod +x /usr/bin/bashio
+# Installa Bashio e i tool necessari utilizzando apt-get
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    bash \
+    jq \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copia lo script di avvio
 COPY run.sh /usr/local/bin/run.sh
