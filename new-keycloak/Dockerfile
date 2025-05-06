@@ -18,6 +18,9 @@ RUN unzip /tmp/bashio.zip -d /usr/local/bin/ \
     && chmod +x /usr/local/bin/bashio \
     && rm /tmp/bashio.zip
 
+# Crea una directory temporanea per il build di Quarkus
+RUN mkdir -p /opt/keycloak/build && chmod -R 777 /opt/keycloak/build
+
 # Scarica e configura Keycloak
 ENV KEYCLOAK_VERSION=26.2.3
 RUN curl -L "https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.tar.gz" | tar -xz -C /opt \

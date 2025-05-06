@@ -22,6 +22,10 @@ export KC_DB_PASSWORD="${DB_PASSWORD}"
 export KC_HOSTNAME="${HOSTNAME}"
 export KC_PROXY=edge
 
+# Crea una directory temporanea scrivibile per Quarkus
+mkdir -p /tmp/quarkus && chmod 777 /tmp/quarkus
+export TMPDIR=/tmp/quarkus
+
 # Avvia Keycloak in modalità production
 echo "Avvio del server Keycloak con la seguente configurazione:"
 echo "Database Host: ${KC_DB_URL_HOST}"
