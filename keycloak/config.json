@@ -4,8 +4,9 @@
     "slug": "keycloak-not-working",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
     "arch": [
-        "amd64",
-        "aarch64"
+        "armv7",
+        "arm64",
+        "amd64"
     ],
     "startup": "services",
     "boot": "auto",
