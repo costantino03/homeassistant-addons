@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Scarica e configura Keycloak
 ENV KEYCLOAK_VERSION=26.2
-RUN curl -L https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.tar.gz | tar -xz -C /opt \
+RUN curl -L https://github.com/keycloak/keycloak/releases/download/26.2.3/keycloak-26.2.3.tar.gz | tar -xz -C /opt \
     && mv /opt/keycloak-* /opt/keycloak
 
 # Copia lo script di avvio
