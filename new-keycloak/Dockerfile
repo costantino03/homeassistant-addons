@@ -6,15 +6,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     jq \
     curl \
-    openjdk-17-jre-headless \
+    unzip \  # Aggiungiamo unzip per gestire gli archivi ZIP
+openjdk-17-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia il file bashio direttamente
-COPY bashio /usr/local/bin/bashio
-RUN chmod +x /usr/local/bin/bashio
+# Copia l'archivio ZIP di bashio
+COPY bashio.zip /tmp/bashio.zip
+
+# Estrai l'archivio ZIP direttamente in /usr/local/bin/
+RUN unzip /tmp/bashio.zip -d /usr/local/bin/
+
+# Rendi eseguibili tutti i file nella directory (potrebbe essere necessario affinarlo)
+RUN find /usr/local/bin/ -type f -exec chmod +x {} \;
+
+# Rimuovi l'archivio ZIP temporaneo
+RUN rm /tmp/bashio.zip
 
 # Scarica e configura Keycloak
-ENV KEYCLOAK_VERSION=26.2.3 
+ENV KEYCLOAK_VERSION=26.2.3
 RUN curl -L "https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.tar.gz" | tar -xz -C /opt \
     && mv /opt/keycloak-* /opt/keycloak
 
