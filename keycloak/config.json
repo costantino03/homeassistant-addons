@@ -32,7 +32,7 @@
         "https_port": {
             "name": "Porta HTTPS",
             "type": "integer",
-            "required": false,
+            "required": true,
             "default": 8443
         },
         "database_vendor": {
@@ -83,13 +83,13 @@
         "default_admin_username": "str",
         "default_admin_password": "str",
         "http_port": "int",
-        "https_port": "int?",
+        "https_port": "int",
         "database_vendor": "str",
-        "database_host": "str?",
-        "database_port": "int?",
-        "database_user": "str?",
-        "database_password": "str?",
-        "database_name": "str?"
+        "database_host": "str",
+        "database_port": "int",
+        "database_user": "str",
+        "database_password": "str",
+        "database_name": "str"
     },
     "url": "https://github.com/costantino03/homeassistant-addons",
     "panel_icon": "mdi:key"
