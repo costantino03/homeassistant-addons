@@ -4,8 +4,16 @@ FROM quay.io/keycloak/keycloak:26.2
 # Espone la porta HTTP per Keycloak
 EXPOSE 8080
 
-# Copia lo script di avvio e imposta i permessi come utente root
+# Passa all'utente root
 USER root
+
+# Installa Bashio
+RUN apk add --no-cache bash jq curl
+RUN curl -J -L -o /usr/bin/bashio \
+    "https://github.com/hassio-addons/bashio/releases/latest/download/bashio" \
+    && chmod +x /usr/bin/bashio
+
+# Copia lo script di avvio
 COPY run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 
