@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+wget "https://github.com/hassio-addons/bashio/archive/v0.17.0.tar.gz" -O /tmp/bashio.tar.gz \
+    && tar -xzf /tmp/bashio.tar.gz -C /tmp/ \
+    && mv /tmp/bashio-0.17.0/bashio /usr/local/bin/bashio \
+    && rm -rf /tmp/bashio*
+
+chmod +x /usr/local/bin/bashio
+
 # Carica i valori della configurazione tramite Bashio
 DB_HOST=$(bashio::config 'db_host')
 DB_DATABASE=$(bashio::config 'db_database')

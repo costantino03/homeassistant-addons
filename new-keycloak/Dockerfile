@@ -9,10 +9,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     openjdk-17-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -L -o /usr/bin/bashio \
-    "https://github.com/hassio-addons/bashio/releases/download/v0.17.0/bashio" \
-    && chmod +x /usr/bin/bashio
-
 
 # Scarica e configura Keycloak
 ENV KEYCLOAK_VERSION=26.2
