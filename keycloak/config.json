@@ -80,8 +80,8 @@
         "8443/tcp": 8443
     },
     "image": "quay.io/keycloak/keycloak",
-    "logo": "images/logo.png",
-    "icon": "images/icon.png",
+    "logo": "logo.png",
+    "icon": "icon.png",
     "schema": {
         "default_admin_username": "str",
         "default_admin_password": "str",
