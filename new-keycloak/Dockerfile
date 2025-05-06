@@ -18,7 +18,7 @@ RUN unzip /tmp/bashio.zip -d /usr/local/bin/ \
     && chmod +x /usr/local/bin/bashio \
     && rm /tmp/bashio.zip
 
-# Crea una directory temporanea per il build di Quarkus
+# Crea una directory temporanea per Quarkus
 RUN mkdir -p /opt/keycloak/build && chmod -R 777 /opt/keycloak/build
 
 # Scarica e configura Keycloak
