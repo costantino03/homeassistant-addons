@@ -76,7 +76,7 @@
         "8080/tcp": 8080,
         "8443/tcp": 8443
     },
-    "image": "ghcr.io/costantino03/homeassistant-addons/keycloak/{arch}",
+    "image": "ghcr.io/costantino03/homeassistant-addons/keycloak",
     "logo": "images/logo.png",
     "icon": "images/icon.png",
     "schema": {
