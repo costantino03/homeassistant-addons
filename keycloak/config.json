@@ -1,0 +1,80 @@
+{
+    "name": "Keycloak",
+    "version": "0.1.0",
+    "slug": "keycloak",
+    "description": "Ospita un server Keycloak per la gestione delle identità.",
+    "arch": [
+        "amd64",
+        "aarch64"
+    ],
+    "startup": "before",
+    "boot": "auto",
+    "options": {
+        "default_admin_username": {
+            "name": "Username Amministratore Predefinito",
+            "type": "string",
+            "required": true,
+            "default": "admin"
+        },
+        "default_admin_password": {
+            "name": "Password Amministratore Predefinita",
+            "type": "string",
+            "required": true,
+            "default": "admin",
+            "format": "password"
+        },
+        "http_port": {
+            "name": "Porta HTTP",
+            "type": "integer",
+            "required": true,
+            "default": 8080
+        },
+        "https_port": {
+            "name": "Porta HTTPS",
+            "type": "integer",
+            "required": false,
+            "default": 8443
+        },
+        "database_vendor": {
+            "name": "Vendor Database",
+            "type": "select",
+            "options": [
+                "h2",
+                "postgres",
+                "mysql"
+            ],
+            "default": "h2"
+        },
+        "database_host": {
+            "name": "Host Database (se non H2)",
+            "type": "string",
+            "required": false
+        },
+        "database_port": {
+            "name": "Porta Database (se non H2)",
+            "type": "integer",
+            "required": false
+        },
+        "database_user": {
+            "name": "Utente Database (se non H2)",
+            "type": "string",
+            "required": false
+        },
+        "database_password": {
+            "name": "Password Database (se non H2)",
+            "type": "string",
+            "required": false,
+            "format": "password"
+        },
+        "database_name": {
+            "name": "Nome Database (se non H2)",
+            "type": "string",
+            "required": false
+        }
+    },
+    "ports": {
+        "8080/tcp": 8080,
+        "8443/tcp": 8443
+    },
+    "image": "ghcr.io/<il_tuo_username>/hassio-addon-keycloak/{arch}"
+}
