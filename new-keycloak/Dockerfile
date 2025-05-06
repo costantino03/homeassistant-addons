@@ -7,11 +7,26 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     curl \
     openjdk-17-jre-headless \
+    tar \ 
     && rm -rf /var/lib/apt/lists/*
 
-# Copia bashio nel container
-COPY bashio /usr/local/bin/bashio
+# Copia l'archivio bashio
+COPY bashio-0.17.0.tar.gz /tmp/bashio-0.17.0.tar.gz
+
+# Crea una directory temporanea per l'estrazione
+RUN mkdir -p /tmp/bashio-extracted
+
+# Estrai l'archivio
+RUN tar -xzf /tmp/bashio-0.17.0.tar.gz -C /tmp/bashio-extracted --strip-components=1
+
+# Sposta l'eseguibile bashio nella directory corretta
+RUN mv /tmp/bashio-extracted/bashio /usr/local/bin/bashio
+
+# Rendi bashio eseguibile
 RUN chmod +x /usr/local/bin/bashio
+
+# Rimuovi i file temporanei e la directory di estrazione
+RUN rm -rf /tmp/bashio-0.17.0.tar.gz /tmp/bashio-extracted
 
 # Scarica e configura Keycloak
 ENV KEYCLOAK_VERSION=26.2
