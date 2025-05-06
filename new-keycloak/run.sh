@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Carica i valori definiti dall'utente tramite Home Assistant
-DB_HOST="${DB_HOST:-$(bashio::config 'db_host')}"
-DB_DATABASE="${DB_DATABASE:-$(bashio::config 'db_database')}"
-DB_USERNAME="${DB_USERNAME:-$(bashio::config 'db_username')}"
-DB_PASSWORD="${DB_PASSWORD:-$(bashio::config 'db_password')}"
-HOSTNAME="${HOSTNAME:-$(bashio::config 'hostname')}"
+# Carica i valori definiti nella configurazione tramite variabili d'ambiente
+DB_HOST="${db_host:-localhost}"
+DB_DATABASE="${db_database:-keycloak}"
+DB_USERNAME="${db_username:-keycloak}"
+DB_PASSWORD="${db_password:-keycloak}"
+HOSTNAME="${hostname:-yourdomain.com}"
 
 # Imposta le variabili d'ambiente per Keycloak
 export KC_DB=mysql
