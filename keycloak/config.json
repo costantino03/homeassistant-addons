@@ -1,5 +1,5 @@
 {
-    "name": "Keycloak",
+    "name": "Keycloak not working",
     "version": "26.2",
     "slug": "keycloak",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
