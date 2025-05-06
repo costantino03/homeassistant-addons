@@ -1,6 +1,6 @@
 {
     "name": "Keycloak",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "slug": "keycloak",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
     "arch": [
@@ -76,7 +76,7 @@
         "8080/tcp": 8080,
         "8443/tcp": 8443
     },
-    "image": "quay.io/keycloak",
+    "image": "quay.io/keycloak/keycloak",
     "logo": "images/logo.png",
     "icon": "images/icon.png",
     "schema": {
