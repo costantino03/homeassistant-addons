@@ -1,0 +1,35 @@
+{
+    "name": "Keycloak",
+    "version": "1.0",
+    "slug": "keycloak",
+    "description": "Host Keycloak on Home Assistant OS",
+    "arch": [
+        "armv7",
+        "arm64",
+        "amd64"
+    ],
+    "startup": "services",
+    "boot": "auto",
+    "options": {
+        "http_port": 8080,
+        "https_port": 8443,
+        "mysql_host": "mysql",
+        "mysql_database": "keycloak",
+        "mysql_user": "keycloak_user",
+        "mysql_password": "yourpassword",
+        "admin_user": "admin",
+        "admin_password": "adminpassword"
+    },
+    "schema": {
+        "http_port": "int",
+        "https_port": "int",
+        "mysql_host": "str",
+        "mysql_database": "str",
+        "mysql_user": "str",
+        "mysql_password": "str",
+        "admin_user": "str",
+        "admin_password": "str"
+    },
+    "logo": "logo.png",
+    "icon": "icon.png",
+}
