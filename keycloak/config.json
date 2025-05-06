@@ -32,44 +32,47 @@
         "https_port": {
             "name": "Porta HTTPS",
             "type": "integer",
-            "required": true,
+            "required": false,
             "default": 8443
         },
         "database_vendor": {
             "name": "Vendor Database",
             "type": "select",
             "options": [
-                "h2",
-                "postgres",
                 "mysql"
             ],
-            "default": "h2"
+            "default": "mysql"
         },
         "database_host": {
-            "name": "Host Database (se non H2)",
+            "name": "Host Database MySQL",
             "type": "string",
-            "required": false
+            "required": true,
+            "default": "localhost"
         },
         "database_port": {
-            "name": "Porta Database (se non H2)",
+            "name": "Porta Database MySQL",
             "type": "integer",
-            "required": false
+            "required": true,
+            "default": 3306
         },
         "database_user": {
-            "name": "Utente Database (se non H2)",
+            "name": "Utente Database MySQL",
             "type": "string",
-            "required": false
+            "required": true,
+            "default": "keycloak"
         },
         "database_password": {
-            "name": "Password Database (se non H2)",
+            "name": "Password Database MySQL",
             "type": "string",
-            "required": false,
+            "required": true,
+            "default": "keycloak",
             "format": "password"
         },
         "database_name": {
-            "name": "Nome Database (se non H2)",
+            "name": "Nome Database MySQL",
             "type": "string",
-            "required": false
+            "required": true,
+            "default": "keycloak"
         }
     },
     "ports": {
