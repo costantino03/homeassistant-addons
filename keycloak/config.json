@@ -1,7 +1,7 @@
 {
     "name": "Keycloak not working",
     "version": "26.2",
-    "slug": "keycloak",
+    "slug": "keycloak-not-working",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
     "arch": [
         "amd64",

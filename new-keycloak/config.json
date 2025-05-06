@@ -31,5 +31,5 @@
         "admin_password": "str"
     },
     "logo": "logo.png",
-    "icon": "icon.png",
+    "icon": "icon.png"
 }
