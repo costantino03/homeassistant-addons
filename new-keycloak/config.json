@@ -4,9 +4,8 @@
     "slug": "keycloak",
     "description": "Host Keycloak on Home Assistant OS",
     "arch": [
-        "armv7",
-        "arm64",
-        "amd64"
+        "amd64",
+        "aarch64"
     ],
     "startup": "services",
     "boot": "auto",
