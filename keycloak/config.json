@@ -7,7 +7,7 @@
         "amd64",
         "aarch64"
     ],
-    "startup": "before",
+    "startup": "services",
     "boot": "auto",
     "options": {
         "default_admin_username": {
@@ -76,11 +76,11 @@
         "8080/tcp": 8080,
         "8443/tcp": 8443
     },
-    "image": "ghcr.io/costantino03/homeassistant-addonskeycloak",
+    "image": "ghcr.io/costantino03/homeassistant-addons/keycloak",
     "logo": "images/logo.png",
     "icon": "images/icon.png",
     "map": [
-        "addon_data:rw"
+        "addon_data"
     ],
     "schema": {
         "default_admin_username": "str",
