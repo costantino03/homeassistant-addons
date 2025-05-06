@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     bash \
     jq \
     curl \
-    unzip \  # Aggiungiamo unzip per gestire gli archivi ZIP
-openjdk-17-jre-headless \
+    unzip \
+    openjdk-17-jre-headless \
     && rm -rf /var/lib/apt/lists/*
 
 # Copia l'archivio ZIP di bashio
