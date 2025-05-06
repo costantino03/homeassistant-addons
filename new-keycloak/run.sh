@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
-# Assicurati che bashio sia eseguibile (dovrebbe esserlo già dal Dockerfile)
-# chmod +x /usr/local/bin/bashio
+# Test Bashio
+if ! /usr/local/bin/bashio > /dev/null 2>&1; then
+    echo "Errore: Bashio non è configurato correttamente o non è eseguibile."
+    exit 1
+fi
 
 # Carica i valori della configurazione tramite Bashio
-DB_HOST=$("/usr/local/bin/bashio" config 'db_host')
-DB_DATABASE=$("/usr/local/bin/bashio" config 'db_database')
-DB_USERNAME=$("/usr/local/bin/bashio" config 'db_username')
-DB_PASSWORD=$("/usr/local/bin/bashio" config 'db_password')
-HOSTNAME=$("/usr/local/bin/bashio" config 'hostname')
+DB_HOST=$(/usr/local/bin/bashio config 'db_host')
+DB_DATABASE=$(/usr/local/bin/bashio config 'db_database')
+DB_USERNAME=$(/usr/local/bin/bashio config 'db_username')
+DB_PASSWORD=$(/usr/local/bin/bashio config 'db_password')
+HOSTNAME=$(/usr/local/bin/bashio config 'hostname')
 
 # Imposta le variabili d'ambiente per Keycloak
 export KC_DB=mysql

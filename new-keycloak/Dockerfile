@@ -13,14 +13,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copia l'archivio ZIP di bashio
 COPY bashio.zip /tmp/bashio.zip
 
-# Estrai l'archivio ZIP direttamente in /usr/local/bin/
-RUN unzip /tmp/bashio.zip -d /usr/local/bin/
-
-# Rendi eseguibili tutti i file nella directory (potrebbe essere necessario affinarlo)
-RUN find /usr/local/bin/ -type f -exec chmod +x {} \;
-
-# Rimuovi l'archivio ZIP temporaneo
-RUN rm /tmp/bashio.zip
+# Estrai il contenuto di bashio.zip
+RUN unzip /tmp/bashio.zip -d /usr/local/bin/ \
+    && chmod +x /usr/local/bin/bashio \
+    && rm /tmp/bashio.zip
 
 # Scarica e configura Keycloak
 ENV KEYCLOAK_VERSION=26.2.3
