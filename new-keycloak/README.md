@@ -1,31 +1,34 @@
-# Keycloak Home Assistant Add-on
+# Keycloak Add-on for Home Assistant
 
-This add-on allows you to host Keycloak on Home Assistant OS with configurable HTTP/HTTPS ports and MySQL database.
+This add-on hosts a Keycloak server for identity management in **production mode** over **HTTP**.
 
-## Configuration Options
-- `http_port`: Port for HTTP (default: 8080).
-- `https_port`: Port for HTTPS (default: 8443).
-- `mysql_host`: MySQL host.
-- `mysql_database`: MySQL database name.
-- `mysql_user`: MySQL username.
-- `mysql_password`: MySQL password.
-- `admin_user`: Keycloak admin username.
-- `admin_password`: Keycloak admin password.
+## Features
+
+- Fully configurable via Home Assistant's user interface.
+- Production-ready Keycloak setup using HTTP (no HTTPS).
+- Supports custom database settings and hostname configuration.
 
 ## Installation
-1. Copy the `new-keycloak` folder into your Home Assistant `addons` directory.
-2. Go to Home Assistant > Settings > Add-ons > Add-on Store.
-3. Refresh the page, and you should see the "Keycloak" add-on listed.
-4. Install and configure the add-on.
-5. Start the add-on.
 
-## Accessing Keycloak
-Once the add-on is running, you can access Keycloak at:
-- `http://<homeassistant-ip>:<http_port>`
-- `https://<homeassistant-ip>:<https_port>`
+1. Clone the add-on repository to your Home Assistant setup.
+2. Add this folder (`new-keycloak`) as a custom repository in your Home Assistant Add-on Store.
+3. Install the Keycloak add-on.
+4. Configure the add-on through Home Assistant's UI.
+5. Start the add-on and access Keycloak at the configured hostname.
 
-## Stopping the Add-on
-To stop the add-on, navigate to the add-on details page and click "Stop."
+## Configuration Options
+
+This add-on supports the following options:
+- `db_host`: The hostname of the database server (default: `localhost`).
+- `db_database`: The name of the database (default: `keycloak`).
+- `db_username`: The username for the database (default: `keycloak`).
+- `db_password`: The password for the database (default: `keycloak`).
+- `hostname`: The hostname of your Keycloak server (default: `yourdomain.com`).
+
+## Ports
+
+The following port is exposed:
+- `8080`: HTTP
 
 # Credits:
 [icon.png](https://www.flaticon.com/authors/pixelmeetup)

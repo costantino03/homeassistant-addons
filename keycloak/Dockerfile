@@ -1,11 +1,12 @@
-ARG BUILD_ARCH
-FROM quay.io/keycloak/keycloak:25.0.0
+# Use the official Keycloak image as the base
+FROM quay.io/keycloak/keycloak:latest
 
-# Imposta variabili d'ambiente di default
-ENV KEYCLOAK_USER=admin
-ENV KEYCLOAK_PASSWORD=admin
+# Expose default Keycloak port for HTTP
+EXPOSE 8080
 
-COPY run /app/run
-RUN chmod a+x /app/run
+# Copy the run script
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
 
-ENTRYPOINT ["/app/run"]
+# Entry point for Keycloak
+ENTRYPOINT ["/usr/local/bin/run.sh"]
