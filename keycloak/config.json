@@ -3,9 +3,10 @@
     "version": "0.1.0",
     "slug": "keycloak",
     "description": "Ospita un server Keycloak per la gestione delle identità.",
-    "init": false,
-    "ingress": false,
-    "panel": false,
+    "arch": [
+        "amd64",
+        "aarch64"
+    ],
     "startup": "before",
     "boot": "auto",
     "options": {
@@ -75,5 +76,24 @@
         "8080/tcp": 8080,
         "8443/tcp": 8443
     },
-    "image": "ghcr.io/<il_tuo_username>/hassio-addon-keycloak/{arch}"
+    "image": "ghcr.io/costantino03/homeassistant-addonskeycloak",
+    "logo": "images/logo.png",
+    "icon": "images/icon.png",
+    "map": [
+        "addon_data:rw"
+    ],
+    "schema": {
+        "default_admin_username": "str",
+        "default_admin_password": "str",
+        "http_port": "int",
+        "https_port": "int?",
+        "database_vendor": "str",
+        "database_host": "str?",
+        "database_port": "int?",
+        "database_user": "str?",
+        "database_password": "str?",
+        "database_name": "str?"
+    },
+    "url": "https://github.com/costantino03/homeassistant-addons",
+    "panel_icon": "mdi:key"
 }
