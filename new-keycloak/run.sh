@@ -3,11 +3,11 @@
 chmod +x /usr/local/bin/bashio
 
 # Carica i valori della configurazione tramite Bashio
-DB_HOST=$(bashio::config 'db_host')
-DB_DATABASE=$(bashio::config 'db_database')
-DB_USERNAME=$(bashio::config 'db_username')
-DB_PASSWORD=$(bashio::config 'db_password')
-HOSTNAME=$(bashio::config 'hostname')
+DB_HOST=$(/usr/local/bin/bashio::config 'db_host')
+DB_DATABASE=$(/usr/local/bin/bashio::config 'db_database')
+DB_USERNAME=$(/usr/local/bin/bashio::config 'db_username')
+DB_PASSWORD=$(/usr/local/bin/bashio::config 'db_password')
+HOSTNAME=$(/usr/local/bin/bashio::config 'hostname')
 
 # Imposta le variabili d'ambiente per Keycloak
 export KC_DB=mysql
