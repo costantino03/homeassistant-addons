@@ -1,6 +1,6 @@
 {
     "name": "Keycloak",
-    "version": "26.2",
+    "version": "latest",
     "slug": "keycloak",
     "description": "Host Keycloak on Home Assistant OS",
     "arch": [
