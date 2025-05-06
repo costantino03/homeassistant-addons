@@ -7,34 +7,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     jq \
     curl \
     openjdk-17-jre-headless \
-    tar \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia l'archivio bashio
-COPY bashio-0.17.0.tar.gz /tmp/bashio-0.17.0.tar.gz
-
-# Crea una directory temporanea per l'estrazione
-RUN mkdir -p /tmp/bashio-extracted
-
-# Estrai l'archivio
-RUN tar -xzf /tmp/bashio-0.17.0.tar.gz -C /tmp/bashio-extracted
-
-# Sposta l'eseguibile bashio nella directory corretta
-RUN mv /tmp/bashio-extracted/bashio-0.17.0/lib/bashio /usr/local/bin/bashio
+# Copia il file bashio direttamente
+COPY bashio /usr/local/bin/bashio
 RUN chmod +x /usr/local/bin/bashio
 
-# Crea la directory per la libreria
-RUN mkdir -p /opt/myaddon/lib
-
-# Copia l'intera cartella lib nella posizione desiderata
-RUN cp -r /tmp/bashio-extracted/bashio-0.17.0/lib /opt/myaddon/
-
-# Rimuovi i file temporanei e la directory di estrazione
-RUN rm -rf /tmp/bashio-0.17.0.tar.gz /tmp/bashio-extracted
-
 # Scarica e configura Keycloak
-ENV KEYCLOAK_VERSION=26.2
-RUN curl -L https://github.com/keycloak/keycloak/releases/download/26.2.3/keycloak-26.2.3.tar.gz | tar -xz -C /opt \
+ENV KEYCLOAK_VERSION=26.2.3 
+RUN curl -L "https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.tar.gz" | tar -xz -C /opt \
     && mv /opt/keycloak-* /opt/keycloak
 
 # Copia lo script di avvio
