@@ -5,7 +5,6 @@
     "description": "Host Keycloak on Home Assistant OS",
     "arch": [
         "amd64",
-        "aarch64"
     ],
     "ingress":true,
     "ingress_port": 8080,
