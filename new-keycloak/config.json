@@ -19,7 +19,7 @@
         "db_username": "keycloak",
         "db_password": "keycloak",
         "hostname": "yourdomain.com",
-        "port": 8080,
+        "port": 8080
     },
     "map": [
         "addon_config:rw",
