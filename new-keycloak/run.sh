@@ -1,36 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Test Bashio
-if ! /usr/local/bin/bashio > /dev/null 2>&1; then
-    echo "Errore: Bashio non è configurato correttamente o non è eseguibile."
-    exit 1
-fi
+export DB_HOST=$(jq -r '.db_host' /data/options.json)
+export DB_NAME=$(jq -r '.db_database' /data/options.json)
+export DB_USER=$(jq -r '.db_username' /data/options.json)
+export DB_PASSWORD=$(jq -r '.db_password' /data/options.json)
+export HOSTNAME=$(jq -r '.hostname' /data/options.json)
 
-# Carica i valori della configurazione tramite Bashio
-DB_HOST=$(/usr/local/bin/bashio config 'db_host')
-DB_DATABASE=$(/usr/local/bin/bashio config 'db_database')
-DB_USERNAME=$(/usr/local/bin/bashio config 'db_username')
-DB_PASSWORD=$(/usr/local/bin/bashio config 'db_password')
-HOSTNAME=$(/usr/local/bin/bashio config 'hostname')
-
-# Imposta le variabili d'ambiente per Keycloak
 export KC_DB=mysql
-export KC_DB_URL_HOST="${DB_HOST}"
-export KC_DB_URL_DATABASE="${DB_DATABASE}"
-export KC_DB_USERNAME="${DB_USERNAME}"
-export KC_DB_PASSWORD="${DB_PASSWORD}"
-export KC_HOSTNAME="${HOSTNAME}"
-export KC_PROXY=edge
+export KC_DB_USERNAME="$DB_USER"
+export KC_DB_PASSWORD="$DB_PASSWORD"
+export KC_DB_URL="jdbc:mysql://${DB_HOST}:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true"
 
-# Crea una directory temporanea scrivibile per Quarkus
-mkdir -p /tmp/quarkus && chmod 777 /tmp/quarkus
-export TMPDIR=/tmp/quarkus
+export KEYCLOAK_ADMIN=admin
+export KEYCLOAK_ADMIN_PASSWORD=admin
 
-# Avvia Keycloak in modalità production
-echo "Avvio del server Keycloak con la seguente configurazione:"
-echo "Database Host: ${KC_DB_URL_HOST}"
-echo "Database Name: ${KC_DB_URL_DATABASE}"
-echo "Database Username: ${KC_DB_USERNAME}"
-echo "Hostname: ${KC_HOSTNAME}"
+echo "Starting Keycloak with MySQL at $KC_DB_URL"
 
-exec /opt/keycloak/bin/kc.sh start-dev
+exec /opt/keycloak/bin/kc.sh start --hostname "$HOSTNAME" --http-port 8080

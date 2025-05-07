@@ -7,6 +7,10 @@
         "amd64",
         "aarch64"
     ],
+    "ingress":true,
+    "ingress_port": 8080,
+    "panel_title": "Keycloak",
+    "panel_icon": "mdi:account-key",
     "startup": "services",
     "boot": "auto",
     "options": {

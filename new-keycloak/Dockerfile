@@ -1,40 +1,9 @@
-# Usa un'immagine base con un package manager
-FROM debian:bullseye-slim
+FROM quay.io/keycloak/keycloak:24.0.1
 
-# Installa dipendenze necessarie
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    bash \
-    jq \
-    curl \
-    unzip \
-    openjdk-17-jre-headless \
-    && rm -rf /var/lib/apt/lists/*
+ENV KC_DB=mysql
 
-# Copia l'archivio ZIP di bashio
-COPY bashio.zip /tmp/bashio.zip
+# Le altre variabili saranno passate da run.sh
 
-# Estrai il contenuto di bashio.zip
-RUN unzip /tmp/bashio.zip -d /usr/local/bin/ \
-    && chmod +x /usr/local/bin/bashio \
-    && rm /tmp/bashio.zip
+RUN /opt/keycloak/bin/kc.sh build
 
-# Crea una directory temporanea per Quarkus
-RUN mkdir -p /opt/keycloak/build && chmod -R 777 /opt/keycloak/build
-
-# Scarica e configura Keycloak
-ENV KEYCLOAK_VERSION=26.2.3
-RUN curl -L "https://github.com/keycloak/keycloak/releases/download/${KEYCLOAK_VERSION}/keycloak-${KEYCLOAK_VERSION}.tar.gz" | tar -xz -C /opt \
-    && mv /opt/keycloak-* /opt/keycloak
-
-# Copia lo script di avvio
-COPY run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
-
-# Espone la porta HTTP
-EXPOSE 8080
-
-# Utente non privilegiato
-USER 1000
-
-# Punto di ingresso
-ENTRYPOINT ["/usr/local/bin/run.sh"]
+CMD ["/opt/keycloak/bin/kc.sh", "start", "--hostname-strict=false"]
