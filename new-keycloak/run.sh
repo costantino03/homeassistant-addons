@@ -7,7 +7,7 @@ DB_USER=$(jq -r '.db_username' /data/options.json)
 DB_PASSWORD=$(jq -r '.db_password' /data/options.json)
 HOSTNAME=$(jq -r '.hostname' /data/options.json)
 PORT=$(jq -r '.port' /data/options.json)
-KEYCLOAK_ADMIN=$(jq -r '.admin_user' /data/options.json)
+KEYCLOAK_ADMIN=$(jq -r '.admin_username' /data/options.json)
 KEYCLOAK_ADMIN_PASSWORD=$(jq -r '.admin_password' /data/options.json)
 
 # Configura variabili d'ambiente per Keycloak
@@ -23,6 +23,5 @@ cd /opt/keycloak
 
 echo "Avvio Keycloak su http://$HOSTNAME:$PORT con utente admin '$KEYCLOAK_ADMIN'"
 
-# Avvio di Keycloak come processo principale (PID 1)
+# Avvio Keycloak come processo principale (PID 1)
 exec /opt/keycloak/bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
-# exec bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
