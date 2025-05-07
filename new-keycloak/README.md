@@ -24,11 +24,13 @@ This add-on supports the following options:
 - `db_username`: The username for the database (default: `keycloak`).
 - `db_password`: The password for the database (default: `keycloak`).
 - `hostname`: The hostname of your Keycloak server (default: `yourdomain.com`).
-
-## Ports
+- `admin_username`: The admin user of your Keycloak server (default: `admin`).
+- `admin_password`: The admin user password of your Keycloak server (default: `admin`).
+- `port`: The port of your Keycloak server (default: `8080`).
+<!-- ## Ports
 
 The following port is exposed:
-- `8080`: HTTP
+- `8080`: HTTP -->
 
 # Credits:
 [icon.png](https://www.flaticon.com/authors/pixelmeetup)
