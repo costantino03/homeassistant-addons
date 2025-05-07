@@ -24,4 +24,5 @@ cd /opt/keycloak
 echo "Avvio Keycloak su http://$HOSTNAME:$PORT con utente admin '$KEYCLOAK_ADMIN'"
 
 # Avvio di Keycloak come processo principale (PID 1)
-exec bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
+exec /opt/keycloak/bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
+# exec bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
