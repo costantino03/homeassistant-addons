@@ -1,11 +1,14 @@
 {
-    "name": "Keycloak",
+    "name": "Keycloak-aarch64",
     "version": "26.02.3",
-    "slug": "keycloak",
+    "slug": "keycloak-aarch64",
     "description": "Host Keycloak on Home Assistant OS",
     "arch": [
-        "amd64"
+        "aarch64"
     ],
+    "build_from": {
+        "aarch64": "ghcr.io/home-assistant/aarch64-base:3.19"
+    },
     "ingress":true,
     "ingress_port": 8080,
     "panel_title": "Keycloak",
