@@ -19,6 +19,8 @@
         "db_username": "keycloak",
         "db_password": "keycloak",
         "hostname": "yourdomain.com",
+        "admin_username": "admin",
+        "admin_password": "admin",
         "port": 8080
     },
     "map": [
@@ -34,6 +36,8 @@
         "db_username": "str",
         "db_password": "str",
         "hostname": "str",
+        "admin_username": "str",
+        "admin_password": "str",
         "port": "int"
     },
     "logo": "logo.png",
