@@ -27,4 +27,4 @@ RUN chmod +x /run.sh
 EXPOSE 8080
 
 # Avvia il container con lo script di avvio
-CMD ["exec", "/run.sh"]
+CMD ["/run.sh"]
