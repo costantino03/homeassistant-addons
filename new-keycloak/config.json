@@ -18,7 +18,8 @@
         "db_database": "keycloak",
         "db_username": "keycloak",
         "db_password": "keycloak",
-        "hostname": "yourdomain.com"
+        "hostname": "yourdomain.com",
+        "port": 8080,
     },
     "map": [
         "addon_config:rw",
@@ -32,7 +33,8 @@
         "db_database": "str",
         "db_username": "str",
         "db_password": "str",
-        "hostname": "str"
+        "hostname": "str",
+        "port": "int"
     },
     "logo": "logo.png",
     "icon": "icon.png"
