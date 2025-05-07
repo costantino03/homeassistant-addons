@@ -23,7 +23,4 @@ export KC_DB_URL="jdbc:mysql://${DB_HOST}:3306/${DB_NAME}?useSSL=false&allowPubl
 echo "Avvio Keycloak su http://$HOSTNAME:$PORT con MySQL"
 
 # Avvia Keycloak
-exec kc.sh start \
-  --hostname "$HOSTNAME" \
-  --http-port "$PORT" \
-  --hostname-strict=false
+exec kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
