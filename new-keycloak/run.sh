@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
 # Estrae configurazioni da /data/options.json
 DB_HOST=$(jq -r '.db_host' /data/options.json)
@@ -15,13 +15,18 @@ export KC_DB=mysql
 export KC_DB_USERNAME="$DB_USER"
 export KC_DB_PASSWORD="$DB_PASSWORD"
 export KC_DB_URL="jdbc:mysql://${DB_HOST}:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true"
-
 export KEYCLOAK_ADMIN
 export KEYCLOAK_ADMIN_PASSWORD
 
-cd /opt/keycloak
+# Debug info
+echo "🔧 Configurazione:"
+echo "- Hostname: $HOSTNAME"
+echo "- Porta: $PORT"
+echo "- Database: $DB_NAME@$DB_HOST"
+echo "- Utente admin: $KEYCLOAK_ADMIN"
 
-echo "Avvio Keycloak su http://$HOSTNAME:$PORT con utente admin '$KEYCLOAK_ADMIN'"
+# Avvio Keycloak
+cd /opt/keycloak || exit 1
+echo "🚀 Avvio Keycloak su http://$HOSTNAME:$PORT"
 
-# Avvio Keycloak come processo principale (PID 1)
 exec /opt/keycloak/bin/kc.sh start --hostname "$HOSTNAME" --http-port "$PORT" --hostname-strict=false
