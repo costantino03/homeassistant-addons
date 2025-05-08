@@ -3,13 +3,11 @@
     "version": "26.02.3",
     "slug": "keycloak-aarch64",
     "description": "Host Keycloak on Home Assistant OS",
-    "arch": [
-        "aarch64"
-    ],
+    "arch": ["aarch64"],
     "build_from": {
         "aarch64": "ghcr.io/home-assistant/aarch64-base:3.19"
     },
-    "ingress":true,
+    "ingress": true,
     "ingress_port": 8080,
     "panel_title": "Keycloak",
     "panel_icon": "mdi:account-key",
@@ -25,13 +23,7 @@
         "admin_password": "admin",
         "port": 8080
     },
-    "map": [
-        "addon_config:rw",
-        "homeassistant_config:rw",
-        "media:rw",
-        "share:rw",
-        "ssl"
-    ],
+    "map": ["addon_config:rw", "homeassistant_config:rw", "media:rw", "share:rw", "ssl"],
     "schema": {
         "db_host": "str",
         "db_database": "str",
